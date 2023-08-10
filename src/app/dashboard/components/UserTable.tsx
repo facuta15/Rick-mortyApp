@@ -1,13 +1,10 @@
-"use client";
-
-// components/UserTable.tsx
+"use client"
 import React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box, Button, IconButton, Snackbar } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CloseIcon from "@mui/icons-material/Close";
-import { useRouter } from 'next/router';
 
 
 interface User {
@@ -25,8 +22,6 @@ interface UserTableProps {
 
 // const UserTable: React.FC<UserTableProps> = ({ users }) => {
 const UserTable: React.FC<UserTableProps> = () => {
-  const [open, setOpen] = React.useState(false);
-  const router = useRouter();
  
 
   const users = [
@@ -57,13 +52,11 @@ const UserTable: React.FC<UserTableProps> = () => {
   ];
 
   const handleEditUser = (userId: number) => {
-    router.push(`/edit-user/${userId}`);
     console.log(`Edit user with ID: ${userId}`);
   };
 
   const handleDeleteUser = (userId: number) => {
     users.filter(user => user.id !== userId)
-    setOpen(true);
     console.log(`Delete user with ID: ${userId}`);
     console.log(users)
   };
@@ -101,35 +94,34 @@ const UserTable: React.FC<UserTableProps> = () => {
     { field: "status", headerName: "Status", flex: 1 },
     { field: "species", headerName: "Species", flex: 1 },
     { field: "type", headerName: "Type", flex: 1 },
-    {
-      field: "actions",
-      headerName: "Actions",
-      flex: 1,
-      renderCell: (params: any) => (
-        <div>
-          <IconButton
-            aria-label="Edit"
-            onClick={() => handleEditUser(params.row.id)}
-          >
-            <EditIcon />
-          </IconButton>
+    // {
+    //   field: "actions",
+    //   headerName: "Actions",
+    //   flex: 1,
+    //   renderCell: (params: any) => (
+    //     <div>
+    //       <IconButton
+    //         aria-label="Edit"
+    //         onClick={() => handleEditUser(params.row.id)}
+    //       >
+    //         <EditIcon />
+    //       </IconButton>
 
-          <IconButton
-            aria-label="Delete"
-            onClick={() => handleDeleteUser(params.row.id)}
-          >
-            <DeleteIcon color="error" />
-          </IconButton>
-          <Snackbar
-            open={open}
-            autoHideDuration={6000}
-            onClose={handleClose}
-            message="El usuario se ha eliminado correctamente"
-            action={action}
-          />
-        </div>
-      ),
-    },
+    //       <IconButton
+    //         aria-label="Delete"
+    //         onClick={() => handleDeleteUser(params.row.id)}
+    //       >
+    //         <DeleteIcon color="error" />
+    //       </IconButton>
+    //       <Snackbar
+    //         autoHideDuration={6000}
+    //         onClose={handleClose}
+    //         message="El usuario se ha eliminado correctamente"
+    //         action={action}
+    //       />
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (

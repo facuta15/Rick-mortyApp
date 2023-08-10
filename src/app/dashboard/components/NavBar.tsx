@@ -1,10 +1,15 @@
 // components/Navbar.tsx
 import React from 'react';
-import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Typography, Avatar, Button } from '@mui/material';
+import { Route } from '@/app/models';
 
 interface NavbarProps {
   username: string;
   profilePicture: string;
+}
+
+interface Props{
+  pathNames: Route[];
 }
 
 const Navbar: React.FC<NavbarProps> = ({ username, profilePicture }) => {
