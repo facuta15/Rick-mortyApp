@@ -1,17 +1,24 @@
 import React from "react";
-import DashboardLayout from "./dashboard/layout";
-import Link from "next/link";
 import { Routes } from "./models";
-import { Button } from "@mui/material";
 import { Navigator } from "@/components";
-function App() {
+
+async function getData() {
+  const response = await fetch("https://rickandmortyapi.com/api/character/2");
+  return response.json();
+}
+
+async function App() {
+  const data = await getData();
+  console.log(data);
   return (
     <div>
+      <Navigator
+        pathNames={[Routes.CHARACTERS, Routes.LOCATIONS]}
+        username={data.name}
+        profilePicture={data.image}
+      ></Navigator>
       <h1>Welcome home</h1>
       <h2>Let's begin</h2>
-      <div>
-        <Navigator pathNames={[Routes.CHARACTERS,Routes.LOCATIONS]}></Navigator>
-      </div>
     </div>
   );
 }

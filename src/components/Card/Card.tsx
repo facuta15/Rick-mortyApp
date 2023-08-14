@@ -16,13 +16,14 @@ interface Props {
 
 function Card({ data }: Props) {
   return (
-    <div className="Card">
+    <div className="Card ">
+      
+      {!! data.image && (
+        <Image className= "Image" alt="foto" width="100" height="100" src={data.image} />
+      )}
       <p>Name:{data.name}</p>
       <p>Type:{data.type ? data.type : "No type"}</p>
       <p>Created:{data.created}</p>
-      {!! data.image && (
-        <Image alt="foto" width="100" height="100" src={data.image} />
-      )}
     </div>
   );
 }
