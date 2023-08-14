@@ -1,9 +1,14 @@
 import React from "react";
 import { Routes } from "./models";
-import { Navigator } from "@/components";
+import { Card, Navigator } from "@/components";
+import "./page.module.css";
 
+
+let randomCharacter = ()=>{
+  return Math.floor(Math.random() * 823)
+}
 async function getData() {
-  const response = await fetch("https://rickandmortyapi.com/api/character/2");
+  const response = await fetch("https://rickandmortyapi.com/api/character/"+randomCharacter());
   return response.json();
 }
 
@@ -17,8 +22,19 @@ async function App() {
         username={data.name}
         profilePicture={data.image}
       ></Navigator>
-      <h1>Welcome home</h1>
-      <h2>Let's begin</h2>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <h1>Welcome home</h1>
+        <h2>Let's begin</h2>
+
+        <Card data={data} />
+      </div>
     </div>
   );
 }

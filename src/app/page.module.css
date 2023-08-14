@@ -7,6 +7,13 @@
   min-height: 100vh;
 }
 
+.homePage{
+  display:flex;
+  justify-content: center;
+  align-items:center ;
+  flex-direction:column;
+  }
+
 .description {
   display: inherit;
   justify-content: inherit;
